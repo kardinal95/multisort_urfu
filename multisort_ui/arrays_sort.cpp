@@ -110,7 +110,7 @@ int get_gaps_size(int size)
 
 /*
 Sorts the subarray of the array depending on step
-Input: arr - pointer to array, size - size of array,
+Input: arr - pointer to array, size - size of array, from - starting position
 step - gap between elements in subarray (1 sorts all the array)
 */
 void sort_insert(int * arr, int size, int from, int step)
@@ -146,36 +146,58 @@ void sort_insert(int * arr, int size, int from, int step)
 	}
 }
 
-// Quicksort (broken!)
+// Quicksort
 
+/*
+Sorts the subarray using quick-sort method
+Input: arr - pointer to array, start - starting position, end - ending position
+*/
 void sort_quick(int * arr, int start, int end)
 {
+	// Array size not less than 2
 	if (end - start > 0)
 	{
+		// Find pivot
 		int pivot = find_pivot(arr, start, end);
+		// Place left on first position, right on last poition
 		int left = start, right = end;
 
+		// While they don't cross
 		while (left < right)
 		{
+			// Shift left until number more ore equal to pivot found
 			while (arr[left] < pivot) left++;
-			while (arr[right] > pivot) right--;
+			// Shift right until number less than pivot found
+			while (arr[right] >= pivot) right--;
+			// Swap if needed
 			if (left < right) swap(arr[left], arr[right]);
 		}
 
-		left = start;
+		// Place left on second pos (subarray size should be cut by 1 at least)
+		left = start+1;
+		// Shift until pivot reached
 		while (arr[left] < pivot) left++;
 
+		// Sort arrays on the left and on the right of pivot
 		sort_quick(arr, start, left - 1);
 		sort_quick(arr, left, end);
 	}
 }
 
+/*
+Finds pivot in subarray
+Input: arr - pointer to array, start - starting position, end - ending position
+Output: resulting pivot
+*/
 int find_pivot(int * arr, int start, int end)
 {
+	// Take the first number as minimum and maximum
 	int min = arr[start], max = arr[start];
+	// Go through array and change minimum and maximum if needed
 	for (int i = start; i <= end; i++) {
 		if (arr[i] < min) min = arr[i];
 		if (arr[i] > max) max = arr[i];
 	}
+	// Find and return the pivot
 	return (min + max) / 2;
 }

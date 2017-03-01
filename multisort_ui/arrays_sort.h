@@ -48,6 +48,15 @@ void sort_insert(int * arr, int size, int from, int step);
 
 // Quicksort
 
+/*
+Sorts the subarray using quick-sort method
+Input: arr - pointer to array, start - starting position, end - ending position
+*/
 void sort_quick(int * arr, int start, int end);
 
+/*
+Finds pivot in subarray
+Input: arr - pointer to array, start - starting position, end - ending position
+Output: resulting pivot
+*/
 int find_pivot(int * arr, int start, int end);

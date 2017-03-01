@@ -19,6 +19,12 @@ void main()
 	// Create basic array to use and fill with random nums
 	printf_s("Choose the size of array: ");
 	scanf_s("%d", &size);
+	if (size < 0)
+	{
+		printf_s("Wrong size specified! Exitting...\n");
+		system("PAUSE");
+		exit(1);
+	}
 	int * arr = new int[size];
 	fill_random(arr, size);
 
