@@ -41,13 +41,13 @@ int get_gaps_size(int size);
 
 /*
 Sorts the subarray of the array depending on step
-Input: arr - pointer to array, size - size of array,
+Input: arr - pointer to array, size - size of array, from - starting position
 step - gap between elements in subarray (0 sorts all the array)
 */
-void sort_insert(int * arr, int size, int step);
+void sort_insert(int * arr, int size, int from, int step);
 
 // Quicksort
 
 void sort_quick(int * arr, int start, int end);
 
-int find_pivot(int * arr, int size);
+int find_pivot(int * arr, int start, int end);
