@@ -174,7 +174,7 @@ void sort_quick(int * arr, int start, int end)
 		}
 
 		// Place left on second pos (subarray size should be cut by 1 at least)
-		left = start+1;
+		left = start + 1;
 		// Shift until pivot reached
 		while (arr[left] < pivot) left++;
 
@@ -200,4 +200,58 @@ int find_pivot(int * arr, int start, int end)
 	}
 	// Find and return the pivot
 	return (min + max) / 2;
+}
+
+// Heapsort
+
+/*
+Sorts the array using heap-sort method
+Input: arr - pointer to array, size - array size
+*/
+void sort_heap(int * arr, int size)
+{
+	for (int pos = size - 1; pos > 0; pos--)
+	{
+		// Make heap from given array
+		build_heap(arr, pos + 1);
+		// Swap the last and the first. Exclude last and continue
+		swap(arr[0], arr[pos]);
+	}
+}
+
+/*
+Builds a heap from given array
+Input: arr - pointer to array, size - size of array
+*/
+void build_heap(int * arr, int size)
+{
+	// Go from bottom to top (exclude lower level)
+	for (int head = size / 2 - 1; head >= 0; head--)
+	{
+		// Swap flag to exclude explicit checks
+		bool swapped = true;
+		// Take subtree
+		int sub = head;
+		while (sub * 2 + 1 < size && swapped)
+		{
+			// Take child
+			int child = sub * 2 + 1;
+			// If right child exists and bigger - take it instead
+			if (child + 1 < size && arr[child] < arr[child + 1])
+			{
+				child++;
+			}
+			// Swap the head with a child if necessary and continue with branch
+			if (arr[sub] < arr[child])
+			{
+				swap(arr[sub], arr[child]);
+				sub = child;
+			}
+			else
+			{
+				// If no swaps - subtree is heap already
+				swapped = false;
+			}
+		}
+	}
 }

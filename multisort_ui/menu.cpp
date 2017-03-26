@@ -13,6 +13,7 @@ void draw_menu()
 	printf_s("2 - Sort the array (bubble),\n");
 	printf_s("3 - Sort the array (shell),\n");
 	printf_s("4 - Sort the array (quick),\n");
+	printf_s("5 - Sort the array (heap),\n");
 	printf_s("0 - Exit program.\n");
 }
 
@@ -41,6 +42,9 @@ Choice get_choice()
 		break;
 	case 4:
 		choice = Quick;
+		break;
+	case 5:
+		choice = Heap;
 		break;
 	case 0:
 		choice = Exit;
@@ -72,6 +76,10 @@ void make_action(Choice choice, int * arr, int size)
 	case Quick:
 		// Sort the array using quick sort method
 		sort_quick(arr, 0, size-1);
+		break;
+	case Heap:
+		// Sort the array using quick sort method
+		sort_heap(arr, size);
 		break;
 	case Regenerate:
 		// Fill array with random numbers

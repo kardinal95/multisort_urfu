@@ -1,7 +1,7 @@
 #pragma once
 
 // Different available selections
-enum Choice { Bubble, Shell, Quick, Regenerate, Print, Error, Exit };
+enum Choice { Bubble, Shell, Quick, Heap, Regenerate, Print, Error, Exit };
 
 /*
 Draws the basic menu

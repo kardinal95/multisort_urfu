@@ -60,3 +60,17 @@ Input: arr - pointer to array, start - starting position, end - ending position
 Output: resulting pivot
 */
 int find_pivot(int * arr, int start, int end);
+
+// Heapsort
+
+/*
+Sorts the array using heap-sort method
+Input: arr - pointer to array, size - array size
+*/
+void sort_heap(int * arr, int size);
+
+/*
+Builds a heap from given array
+Input: arr - pointer to array, size - size of array
+*/
+void build_heap(int * arr, int size);
